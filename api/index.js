@@ -20,7 +20,7 @@ mongoose
 // Inicializar el servidor
 const app = express();
 
-// Middleware
+// use json
 app.use(express.json());
 
 // Configuracion del servidor
@@ -30,3 +30,14 @@ app.listen(3000, () => {
 
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
+
+// Middlewares
+app.use((err, req, res, next) => {
+    const statusCode = err.status || 500;
+    const message = err.message || "Internal Server Error";
+    res.status(statusCode).json({
+        success: false,
+        statusCode,
+        message,
+    });
+});
