@@ -21,7 +21,7 @@ export default function DashSidebar() {
         <Sidebar className='w-full md:w-56'>
             <Sidebar.Items>
                 <Sidebar.ItemGroup>
-                    <Link to="/dashboard?tab=profile" as={'div'}>
+                    <Link to="/dashboard?tab=profile" className='nav-link'>
                         <Sidebar.Item
                             active={tab === 'profile'}
                             icon={HiUser}
